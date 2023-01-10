@@ -17,10 +17,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   inputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     margin: 50,
     marginHorizontal: 20,
   },
   input: {
+   width: "75%",
    borderBottomColor: "#145C9E",
    borderBottomWidth: 1,
    height: 40,
