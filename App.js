@@ -1,8 +1,16 @@
+//importando el useState desde react
 import { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function App() {
+  //inicializando el estado importado desde react
 const [task, setTask] = useState("");
+
+const onHandlerChange = (text) => {
+  setTask(text)
+}
+
+console.warn("task",task)
 
   return (
     <View style={styles.container}>
@@ -14,6 +22,7 @@ const [task, setTask] = useState("");
       autoCapitalize="none"
       placeholder="hola mundo wrold" 
       value="task"
+      onChangeText={onHandlerChange}
       />
       <Button title="Add" color="#145C9E"/>
       </View>
