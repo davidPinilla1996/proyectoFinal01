@@ -1,10 +1,20 @@
+import { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function App() {
+const [task, setTask] = useState("");
+
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-      <TextInput style={styles.input} placeholder="hola mundo wrold" />
+      <TextInput 
+      style={styles.input} 
+      autoComplete="off"
+      autoCorrect={false}
+      autoCapitalize="none"
+      placeholder="hola mundo wrold" 
+      value="task"
+      />
       <Button title="Add" color="#145C9E"/>
       </View>
     </View>
