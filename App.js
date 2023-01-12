@@ -7,7 +7,7 @@ export default function App() {
   const [tasks, setTasks] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
-
+//recibe el texto que contiene el campo
   const onHandlerChange = (text) => {
     setTask(text)
   }
