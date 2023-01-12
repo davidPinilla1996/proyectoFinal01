@@ -5,11 +5,23 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 export default function App() {
   //inicializando el estado importado desde react
 const [task, setTask] = useState("");
+const[tasks, setTasks] = useState([]);
 
 //creo un metodo que reciba el texto que contiene el campo 
 const onHandlerChange = (text) => {
   //setienado el valor se asignacion como el de mi estado (setTask)
   setTask(text)
+}
+
+const onHandlerSubmit = () => {
+  setTasks([
+    ...task,
+    {
+      id: Math.random().toString(),
+      value: task
+    }
+  ]);
+  setTask("");
 }
 
 console.warn("task",task)
@@ -23,11 +35,24 @@ console.warn("task",task)
       autoCorrect={false}
       autoCapitalize="none"
       placeholder="hola mundo wrold" 
-      value="task"
+      value={task}
       //El onChangeText me retorna el valor que yo e escrito dentro del campo
       onChangeText={onHandlerChange}
       />
-      <Button title="Add" color="#145C9E"/>
+      <Button 
+      disabled={!task}
+      title="Add" 
+      color="#145C9E"
+      //el evento de onPress se ejecuta cada ves que se le da click en el boton en este caso
+      onPress={onHandlerSubmit}
+      />
+      <View>
+        {
+          tasks.map((item) => (
+             <Text key={item.id}>{item.vale}</Text>
+          ))
+        }
+      </View>
       </View>
     </View>
   );
