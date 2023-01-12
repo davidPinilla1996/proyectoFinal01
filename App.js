@@ -6,7 +6,9 @@ export default function App() {
   //inicializando el estado importado desde react
 const [task, setTask] = useState("");
 
+//creo un metodo que reciba el texto que contiene el campo 
 const onHandlerChange = (text) => {
+  //setienado el valor se asignacion como el de mi estado (setTask)
   setTask(text)
 }
 
@@ -22,6 +24,7 @@ console.warn("task",task)
       autoCapitalize="none"
       placeholder="hola mundo wrold" 
       value="task"
+      //El onChangeText me retorna el valor que yo e escrito dentro del campo
       onChangeText={onHandlerChange}
       />
       <Button title="Add" color="#145C9E"/>
