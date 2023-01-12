@@ -1,3 +1,4 @@
+//importando el useState desde react
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, FlatList, Modal, TouchableOpacity, Systrace } from 'react-native';
 
@@ -55,6 +56,7 @@ export default function App() {
           autoCorrect={false}
           autoCapitalize='none'
           value={task}
+          //me retorna el valor que yo escribo dentro del estado
           onChangeText={onHandlerChange}
         />
         <Button disabled={!task} title='Add' color='#626893' onPress={onHandlerSubmit} />
