@@ -59,7 +59,7 @@ export default function App() {
           //me retorna el valor que yo escribo dentro del estado
           onChangeText={onHandlerChange}
         />
-        <Button disabled={!task} title='Add' color='#626893' onPress={onHandlerSubmit} />
+        <Button disabled={!task} title='Click' color='#626893' onPress={onHandlerSubmit} />
       </View>
       <FlatList 
         data={tasks}
