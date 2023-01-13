@@ -51,7 +51,7 @@ export default function App() {
       <View style={styles.inputContainer}>
         <TextInput 
           style={styles.input} 
-          placeholder='add a new task' 
+          placeholder='Escribe algo' 
           autoComplete='off'
           autoCorrect={false}
           autoCapitalize='none'
