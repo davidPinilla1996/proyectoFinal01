@@ -25,12 +25,12 @@ const [selectedTask, setSelectedTask] = useState(null)
    }
 
 const onHandlerModal = (item) => {
-  setModalVisible(!setModalVisible)
+  setModalVisible(!isModalVisible)
   setSelectedTask(item);
 }
 
 
-   const renderItem = ({item}) => (
+   const renderItem = ({ item }) => (
     <TouchableOpacity style={styles.itemContainer} onPress={() => onHandlerModal(item)}>
          <Text  style={styles.itemList}>{item.value}</Text>
     </TouchableOpacity>
@@ -56,7 +56,7 @@ const onHandlerModal = (item) => {
         keyExtractor={keyExtractor}
         style={styles.listContainer}
       />
-      <Modal visible={isModalVisible} animationType="slide">
+      <Modal visible={isModalVisible} animationType='slide'>
         <Text>holamunsnfaxjhfs</Text>
       </Modal>
     </View>
