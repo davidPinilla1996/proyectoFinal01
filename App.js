@@ -1,54 +1,63 @@
-import React, { useState } from 'react'
-import { Button, StyleSheet, TextInput, View, Text, FlatList, TouchableOpacity, Modal} from 'react-native'
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, Button, FlatList, Modal, TouchableOpacity, Systrace } from 'react-native';
 
+export default function App() {
+  const [task, setTask] = useState('');
+  const [tasks, setTasks] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
 
-
-export default  function App () {
-const [task,setTask] = useState("");
-const [tasks,setTasks] = useState([]);
-const[isModalVisible, setModalVisible] = useState(false);
-const [selectedTask, setSelectedTask] = useState(null)
-
-   const onHandlerChange = (text) => {
+  const onHandlerChange = (text) => {
     setTask(text)
-   }
+  }
 
-   const onHandlerSubmit = () => {
+  const onHandlerSubmit = () => {
     setTasks([
       ...tasks,
       {
-        id: Math.random() .toString(),
+        id: Math.random().toString(),
         value: task
       }
     ]);
-    setTask("");
-   }
+    setTask('');
+  }
 
-const onHandlerModal = (item) => {
-  setModalVisible(!isModalVisible)
-  setSelectedTask(item);
-}
+  const onHandlerModal = (item) => {
+    setIsModalVisible(!isModalVisible)
+    setSelectedTask(item);
+  }
 
-
-   const renderItem = ({ item }) => (
+  const renderItem = ({ item }) => (
     <TouchableOpacity style={styles.itemContainer} onPress={() => onHandlerModal(item)}>
-         <Text  style={styles.itemList}>{item.value}</Text>
+      <Text style={styles.itemList}>{item.value}</Text>
     </TouchableOpacity>
-   )
+  )
 
-   const keyExtractor = (item) => item.id;
+  const keyExtractor = (item) => item.id;
+  
+  const onHandleCancel = () => {
+    setIsModalVisible(!isModalVisible);
+    setSelectedTask(null);
+  }
+
+  const onHandleDelete = () => {
+    setTasks((prevTaskList) => prevTaskList.filter((task) => task.id !== selectedTask.id));
+    setIsModalVisible(!isModalVisible);
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-          <TextInput  
+        <TextInput 
           style={styles.input} 
-          placeholder="Escribe algo" 
+          placeholder='add a new task' 
+          autoComplete='off'
+          autoCorrect={false}
+          autoCapitalize='none'
           value={task}
-          //el metodo de onchange me retorna el valor que se escribe dentro del campo
           onChangeText={onHandlerChange}
-          />
-          <Button disabled={!task} title='Click' color="#4e4e4e" onPress={onHandlerSubmit}/>
+        />
+        <Button disabled={!task} title='Add' color='#626893' onPress={onHandlerSubmit} />
       </View>
       <FlatList 
         data={tasks}
@@ -57,7 +66,25 @@ const onHandlerModal = (item) => {
         style={styles.listContainer}
       />
       <Modal visible={isModalVisible} animationType='slide'>
-        <Text>holamunsnfaxjhfs</Text>
+        <View style={styles.modalContainer}>
+          <Text style={styles.modalTitle}>Task Detail</Text>
+          <View style={styles.modalDetailContainer}>
+            <Text style={styles.modalDetailMessage}>Are you sure to delete this item?</Text>
+            <Text style={styles.selectedTask}>{selectedTask?.value}</Text>
+          </View>
+          <View style={styles.modalButtonContainer}>
+            <Button 
+              title='Cancel'
+              color='#626893'
+              onPress={onHandleCancel}
+            />
+            <Button
+              title='Delete'
+              color='red'
+              onPress={onHandleDelete}
+            />
+          </View>
+        </View>
       </Modal>
     </View>
   );
@@ -65,40 +92,71 @@ const onHandlerModal = (item) => {
 
 const styles = StyleSheet.create({
   container: {
-    //flex 1 quiere decir que va a ocupar todo el espacio que tiene diponible el componente
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
   inputContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 50,
-    justifyContent: "space-between",
-    marginHorizontal: 20
+    marginHorizontal: 20,
   },
-  input:{
-     width: "75%",
-     borderBottomColor: "#626893",
-     borderBottomWidth: 1,
-     height: 40,
-     color: "#000"
+  input: {
+    width: '75%',
+    borderBottomColor: '#626893',
+    borderBottomWidth: 1,
+    height: 40,
+    color: '#212121'
   },
-  listContainer : {
-     marginHorizontal: 20,
-     marginTop: 40
-    },
+  listContainer: {
+    marginHorizontal: 20,
+    marginTop: 40
+  },
   itemContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingVertical: 20,
     paddingHorizontal: 10,
-    backgroundColor: "#4e4e4e",
+    backgroundColor: '#626893',
     marginBottom: 10,
-    borderRadius: 10
-    },
+    borderRadius: 10,
+  },
   itemList: {
-      fontSize: 14,
-      color: "#000",
-      fontWeight: "bold"
-    },
-})
+    fontSize: 14,
+    color: '#ffffff',
+    fontWeight: 'bold'
+  },
+  modalContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 50,
+    paddingVertical: 20,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  modalDetailContainer: {
+    padddingVertical: 20,
+  },
+  modalDetailMessage: {
+    fontSize: 14,
+    color: '#212121'
+  },
+  selectedTask: {
+    fontSize: 14,
+    color: '#212121',
+    fontWeight: 'bold',
+    paddingVertical: 10,
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  modalButtonContainer: {
+    width: '70%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginHorizontal: 20,
+  }
+});
