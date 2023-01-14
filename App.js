@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { Button, StyleSheet, TextInput, View, Text} from 'react-native'
+import { Button, StyleSheet, TextInput, View, Text, FlatList, TouchableOpacity, Modal} from 'react-native'
 
 
 
 export default  function App () {
-const [task,setTask] = useState("")
-const [tasks,setTasks] = useState([])
+const [task,setTask] = useState("");
+const [tasks,setTasks] = useState([]);
+const[isModalVisible, setModalVisible] = useState(false);
+const [selectedTask, setSelectedTask] = useState(null)
 
    const onHandlerChange = (text) => {
     setTask(text)
@@ -22,7 +24,19 @@ const [tasks,setTasks] = useState([])
     setTask("");
    }
 
-   console.warn("tasks", tasks);
+const onHandlerModal = (item) => {
+  setModalVisible(!setModalVisible)
+  setSelectedTask(item);
+}
+
+
+   const renderItem = ({item}) => (
+    <TouchableOpacity style={styles.itemContainer} onPress={() => onHandlerModal(item)}>
+         <Text  style={styles.itemList}>{item.value}</Text>
+    </TouchableOpacity>
+   )
+
+   const keyExtractor = (item) => item.id;
 
   return (
     <View style={styles.container}>
@@ -36,15 +50,15 @@ const [tasks,setTasks] = useState([])
           />
           <Button disabled={!task} title='Click' color="#4e4e4e" onPress={onHandlerSubmit}/>
       </View>
-          <View style={styles.listContainer}>
-             {
-              tasks.map((item) => (
-                <View style={styles.itemContainer}>
-                     <Text  style={styles.itemList} key={item.id}>{item.value}</Text>
-                </View>
-              ))
-             }
-          </View>
+      <FlatList 
+        data={tasks}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        style={styles.listContainer}
+      />
+      <Modal visible={isModalVisible} animationType="slide">
+        <Text>holamunsnfaxjhfs</Text>
+      </Modal>
     </View>
   );
 }
