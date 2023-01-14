@@ -10,7 +10,9 @@ export default function App() {
   //Es una constante que tiene un array y dicha array contiene el primer elemento que seria el valor del estado y el segundo elemento que seria la funcion que se ocupa de actualizar el estado, lo igualamos a useState y podemos inicializar el estado con un valor.
   //un estado puede ser datos primarios, un objeto, una funcion, otro componente etc...  
                          //inicializamos el useState como un estado vacio por que el campo del formualrio esta vacio inicialmente.
-  const [tarea, setTask] = useState('');
+  const [tarea, setTask] = useState("");
+//inicializamos otro estado nuevo para poder almacenar o capturar todos los elementos que querramos crear como una lista de tareas.
+                          //lo inicalizamos como una array vacia incialmente por que inicialmente no voy a tener ninguna tarea previa a poder realizar.
   const [tareas, setTasks] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
@@ -20,15 +22,22 @@ export default function App() {
     //setiando el valor como asignacion de mi estado.
     setTask(text)
   }
-
+//esta funcion gestiona lo que va a pasar a la hora de darle click en el boton que esta conectada al onPress.
+//en este caso al momento de darle clcik en el boton guarda la tarea.
   const onHandlerSubmit = () => {
+    //setiamos las nuevas tareas haciendo una copia de las listas anteriores por que la lista podria estar llena osea tenber mas de un elemento
     setTasks([
       ...tareas,
+      //añadimos un objeto osea las tareas van a ser un array de objetos
       {
+        //las tareas van a tener un  id el cual va a tener un numero aleatorio simplemente para poder guardar la tarea y asiganarselo como un id.
+            //con Math.random().toString() sacamos un numero aleatorio.
         id: Math.random().toString(),
+        //va a tener tambien el valor de mi tarea en ese momento.
         value: tarea
       }
     ]);
+    //luego vaciamos la tarea para asi poder crear una nueva.
     setTask('');
   }
 
@@ -73,7 +82,15 @@ export default function App() {
           // el onChangeText me retorna el valor que yo e escrito dentro del campo.
           onChangeText={onHandlerChange}
         />
-        <Button disabled={!tarea} title='Add' color='#626893' onPress={onHandlerSubmit} />
+        <Button 
+        //Agragamos la propiedad disabled para cuando  mi tarea este vacia entonces este desabilitado el boton.
+        disabled={!tarea} 
+        title='Add' 
+        color='#626893' 
+        //el boton tiene un evento o propiedad que ejecuta un evento a la hora de hacer click que se llama onPress.
+        //cuando exista mi estado va a estar habilitado y cuando no exista mi estado entonces va a estar desabilitado.
+        onPress={onHandlerSubmit} 
+        />
       </View>
       <FlatList 
         data={tareas}
