@@ -46,13 +46,14 @@ export default function App() {
     setSelectedTask(item);
   }
 
+  //destructura cada uno de los elementos de la lista.
   const renderItem = ({ item }) => (
     //                                             El onPress Controla que se llamará(que pasara) cuando el usuario toque el botón.
     <TouchableOpacity style={styles.itemContainer} onPress={() => onHandlerModal(item)}>
       <Text style={styles.itemList}>{item.value}</Text>
     </TouchableOpacity>
   )
-
+//extraemos el id de nuestra lista con este componmente. 
   const keyExtractor = (item) => item.id;
   
   const onHandleCancel = () => {
@@ -95,8 +96,9 @@ export default function App() {
       <FlatList 
       //origen de los datos.
         data={tareas}
-        //
+        //componente a rederizar.
         renderItem={renderItem}
+        //clave de iteracion.
         keyExtractor={keyExtractor}
         style={styles.listContainer}
       />
@@ -104,17 +106,17 @@ export default function App() {
         <View style={styles.modalContainer}>
           <Text style={styles.modalTitle}>Task Detail</Text>
           <View style={styles.modalDetailContainer}>
-            <Text style={styles.modalDetailMessage}>Are you sure to delete this item?</Text>
+            <Text style={styles.modalDetailMessage}>Quieres eliminar la tarea</Text>
             <Text style={styles.selectedTask}>{selectedTask?.value}</Text>
           </View>
           <View style={styles.modalButtonContainer}>
             <Button 
-              title='Cancel'
+              title='Cancelar'
               color='#626893'
               onPress={onHandleCancel}
             />
             <Button
-              title='Delete'
+              title='Borrar'
               color='red'
               onPress={onHandleDelete}
             />
