@@ -93,7 +93,9 @@ export default function App() {
         />
       </View>
       <FlatList 
+      //origen de los datos.
         data={tareas}
+        //
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         style={styles.listContainer}
