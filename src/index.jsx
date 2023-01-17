@@ -6,7 +6,6 @@ import { Text, View, TextInput, Button, FlatList, Modal, TouchableOpacity} from 
 import { styles } from "./styles";
 
 
-
 const App = () => {
   //inicializamos el useState.
   //Es una constante que tiene un array y dicha array contiene el primer elemento que seria el valor del estado y el segundo elemento que seria la funcion que se ocupa de actualizar el estado, lo igualamos a useState y podemos inicializar el estado con un valor.
