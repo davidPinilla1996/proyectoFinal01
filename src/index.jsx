@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Text, View, TextInput, Button, FlatList, Modal, TouchableOpacity} from 'react-native';
 //importamos el archivo styles.js
 import { styles } from "./styles";
+import { AddItem } from './components';
 
 
 const App = () => {
