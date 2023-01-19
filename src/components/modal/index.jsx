@@ -1,8 +1,9 @@
 import React from "react";
-import { Modal, View, Text, Button } from 'react-native'
+import { Modal, View, Text, Button } from'react-native'
 import { styles } from "./styles";
 
-const CustomModal = ({ isModalVisible, selectedTask, onHandleCancel, onHandleDelete,onHandleTacha}) => {
+const CustomModal = ({ isModalVisible, selectedTask, onHandleCancel, onHandleDelete}) => {
+  
     return (
         <Modal visible={isModalVisible} animationType='slide'>
         <View style={styles.modalContainer}>

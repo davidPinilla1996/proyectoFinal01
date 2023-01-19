@@ -15,7 +15,7 @@ const App = () => {
     setTask(text)
   }
 
-  const onHandlerSubmit = () => {
+  const onHandlerSubmit = (opcion) => {
     setTasks([
       ...tasks,
       {
@@ -45,10 +45,10 @@ const App = () => {
     <View style={styles.container}>
       <AddItem 
         buttonColor={colors.primary}
-        buttonText='Add'
+        buttonText='Click'
         onHandlerChange={onHandlerChange}
         onHandlerSubmit={onHandlerSubmit}
-        placeholder='add a new task'
+        placeholder='Escribe tu tarea a Realizar'
         task={task}
       />
       <TaskList 
