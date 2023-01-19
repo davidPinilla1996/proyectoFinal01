@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { styles } from './styles';
-import { AddItem, CustomModal, TaskList } from './components';
+import { AddItem, CustomModal, TaskList} from './components';
 import { colors } from './constants/theme/colors';
 
 
@@ -42,7 +42,7 @@ const App = () => {
   }
 
   return (
-    <View style={styles.container}>
+  <View style={styles.container}>
       <AddItem 
         buttonColor={colors.primary}
         buttonText='Click'
@@ -61,7 +61,7 @@ const App = () => {
         onHandleDelete={onHandleDelete}
         selectedTask={selectedTask}
      />
-    </View>
+  </View>
   );
 }
 
