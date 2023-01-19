@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { View, TextInput, Button} from 'react-native';
 import { styles } from './styles'
 
 const AddItem = ({ 
@@ -10,18 +10,18 @@ const AddItem = ({
     buttonColor, 
     onHandlerSubmit
 }) => {
-    return (
+    return (        
         <View style={styles.inputContainer}>
-        <TextInput 
-          style={styles.input} 
-          placeholder={placeholder}
-          autoComplete='off'
-          autoCorrect={false}
-          autoCapitalize='none'
-          value={task}
-          onChangeText={onHandlerChange}
-        />
-        <Button disabled={!task} title={buttonText} color={buttonColor} onPress={onHandlerSubmit} />
+            <TextInput 
+                style={styles.input} 
+                placeholder={placeholder}
+                autoComplete='off'
+                autoCorrect={false}
+                autoCapitalize='none'
+                value={task}
+                onChangeText={onHandlerChange}
+            />
+         <Button disabled={!task} title={buttonText} color={buttonColor} onPress={onHandlerSubmit}/>
       </View>
     )
 }

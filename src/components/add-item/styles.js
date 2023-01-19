@@ -8,10 +8,11 @@ export const styles = StyleSheet.create({
         marginHorizontal: 20,
       },
       input: {
-        width: '75%',
-        borderBottomColor: '#626893',
-        borderBottomWidth: 1,
+        width: '60%',
+        borderBottomColor: '#fff',
+        borderBottomWidth: 2,
         height: 40,
-        color: '#212121'
-      },
+        color: '#fff',
+        fontSize: 20
+      }
 })

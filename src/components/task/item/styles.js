@@ -3,22 +3,21 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: 20,
     paddingHorizontal: 10,
-    backgroundColor: '#626893',
-    marginBottom: 10,
-    borderRadius: 10,
+    backgroundColor: '#fff',
+    marginBottom: 15,
+    borderRadius: 20,
   },
   checkBox: {
-     fontSize: 18
+     fontSize: 19
   },
   itemList: {
-    fontSize: 18,
-    color: '#ffffff',
+    fontSize: 20,
+    color: '#000',
     fontWeight: 'bold',
-    marginLeft: 10
+    marginLeft: 20
   },
   containerHijo: {
     flexDirection: 'row',

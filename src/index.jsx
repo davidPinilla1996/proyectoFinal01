@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, ImageBackground, Text } from 'react-native';
 import { styles } from './styles';
 import { AddItem, CustomModal, TaskList} from './components';
 import { colors } from './constants/theme/colors';
@@ -43,24 +43,32 @@ const App = () => {
 
   return (
   <View style={styles.container}>
-      <AddItem 
-        buttonColor={colors.primary}
-        buttonText='Click'
-        onHandlerChange={onHandlerChange}
-        onHandlerSubmit={onHandlerSubmit}
-        placeholder='Escribe tu tarea a Realizar'
-        task={task}
-      />
-      <TaskList 
-        tasks={tasks}
-        onHandlerModal={onHandlerModal}
-      />
-     <CustomModal 
-        isModalVisible={isModalVisible}
-        onHandleCancel={onHandleCancel}
-        onHandleDelete={onHandleDelete}
-        selectedTask={selectedTask}
-     />
+     <ImageBackground source={(require("./imagenes/hdFondo.jpg"))} style={styles.image}>
+          <View style={styles.textoContainer}>
+              <Text 
+                 style={styles.textoPrincipal}>
+                 LISTA DE TAREAS
+              </Text>
+          </View>
+         <AddItem
+           buttonColor={colors.primary}
+           buttonText='Agregar tarea'
+           onHandlerChange={onHandlerChange}
+           onHandlerSubmit={onHandlerSubmit}
+           placeholder='Escribe tu tarea'
+           task={task}
+           />
+         <TaskList
+           tasks={tasks}
+           onHandlerModal={onHandlerModal}
+           />
+         <CustomModal 
+            isModalVisible={isModalVisible}
+            onHandleCancel={onHandleCancel}
+            onHandleDelete={onHandleDelete}
+            selectedTask={selectedTask}
+        />
+     </ImageBackground>
   </View>
   );
 }
