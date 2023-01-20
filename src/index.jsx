@@ -55,7 +55,7 @@ const App = () => {
            buttonText='Agregar tarea'
            onHandlerChange={onHandlerChange}
            onHandlerSubmit={onHandlerSubmit}
-           placeholder='Escribe tu tareaa'
+           placeholder='Escribe tu tarea'
            task={task}
            />
          <TaskList
