@@ -2,12 +2,8 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
       textoPrincipal: {
-         color: "#fff",
-         fontSize: 25
-      },
-      container: {
-        flex: 1,
-       backgroundColor: "#fff",
+         color: "#686868",
+         fontSize: 30
       },
       textoContainer: {
          display: "flex",
@@ -15,6 +11,6 @@ export const styles = StyleSheet.create({
          marginTop: 70
       },
       image: {
-        height: "100%",
+        height: "100%"
       }
   });

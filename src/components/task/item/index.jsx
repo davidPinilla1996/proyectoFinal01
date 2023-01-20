@@ -8,12 +8,12 @@ const TaskItem = ({ item, onHandlerModal }) => {
  const[ datoGuadadoCheck, setDatoGuardadoCheck ]= useState("📌");
 
  const FuncionQUeCambiaSegun = () => {
-    if (datoGuadadoCheck === "✔️") {
+    if (datoGuadadoCheck === "✅") {
       setDatoGuardadoCheck("❌")
     }else{
       setDatoGuardadoCheck("📌")
     }if (datoGuadadoCheck == ("📌")) {
-      setDatoGuardadoCheck("✔️")
+      setDatoGuardadoCheck("✅")
     }
  }
 

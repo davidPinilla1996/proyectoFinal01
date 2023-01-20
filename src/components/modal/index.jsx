@@ -1,21 +1,28 @@
 import React from "react";
-import { Modal, View, Text, Button} from'react-native'
+import { Modal, View, Text, Button, ImageBackground} from'react-native'
 import { styles } from "./styles";
 
 const CustomModal = ({ isModalVisible, selectedTask, onHandleCancel, onHandleDelete}) => {
   
     return (
   <Modal visible={isModalVisible} animationType='slide'>
+    <ImageBackground source={(require("../../imagenes/pantalla.jpg"))} style={styles.image}>
       <View style={styles.modalContainer}>
-         <Text style={styles.modalTitle}>Tarea detallada</Text>
-             <View style={styles.modalDetailContainer}>
+            <Text 
+              style={styles.modalTitle}
+            >
+              Seleccionaste la tarea
+            </Text>
+            <View 
+               style={styles.modalDetailContainer}
+            >
                  <Text style={styles.selectedTask}>{selectedTask?.value}</Text>
                  <Text style={styles.modalDetailMessage}>Que deseas hacer?</Text>
-             </View>
+            </View>
           <View style={styles.modalButtonContainer}>
               <Button 
                  title='Cancelar'
-                 color='#626893'
+                 color='#686868'
                  onPress={onHandleCancel}
               />
               <Button
@@ -24,7 +31,8 @@ const CustomModal = ({ isModalVisible, selectedTask, onHandleCancel, onHandleDel
                  onPress={onHandleDelete}
               />
           </View>
-      </View>
+       </View>
+    </ImageBackground>  
    </Modal>
     )
 }

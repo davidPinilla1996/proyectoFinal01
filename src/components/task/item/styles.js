@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 20,
     paddingHorizontal: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#686868',
     marginBottom: 15,
     borderRadius: 20,
   },
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   },
   itemList: {
     fontSize: 20,
-    color: '#000',
+    color: '#fff',
     fontWeight: 'bold',
     marginLeft: 20
   },

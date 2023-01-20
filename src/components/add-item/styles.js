@@ -9,10 +9,10 @@ export const styles = StyleSheet.create({
       },
       input: {
         width: '60%',
-        borderBottomColor: '#fff',
+        borderBottomColor: '#686868',
         borderBottomWidth: 2,
         height: 40,
-        color: '#fff',
+        color: '#000',
         fontSize: 20
       }
 })

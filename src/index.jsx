@@ -43,7 +43,7 @@ const App = () => {
 
   return (
   <View style={styles.container}>
-     <ImageBackground source={(require("./imagenes/hdFondo.jpg"))} style={styles.image}>
+     <ImageBackground source={(require("./imagenes/pantalla.jpg"))} style={styles.image}>
           <View style={styles.textoContainer}>
               <Text 
                  style={styles.textoPrincipal}>
