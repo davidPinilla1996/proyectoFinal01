@@ -8,12 +8,16 @@ import { colors } from './constants/theme/colors';
 
 
 const App = () => {
+  //Inicializamos los estados.
+                        //Inicializamos el useState como un estado vacio 
+                        //por que inicalmente el campo del AddItem o del formulario va a estar vacio.
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
-
+   //creo una funcion que recibe el texto que contiene el campo del AddItem 
   const onHandlerChange = (text) => {
+    //Le asigno ese valor de text a la funcion de setTask del useState.
     setTask(text)
   }
 
@@ -54,12 +58,14 @@ const App = () => {
           </View>
          <AddItem
              buttonColor={colors.primary}
-             //Texto que se mostrará en los botones
+             //Texto que se mostrará en los botones.
              buttonText='Agregar tarea'
+             //Llamamos a la funcion onHandlerChange
              onHandlerChange={onHandlerChange}
              onHandlerSubmit={onHandlerSubmit}
              //para que se vea lo que vamos a tener que llenar dentro del campo.
              placeholder='Escribe tu tarea'
+            //El valor que ahora se conoce como task del useState lo asiganmos como valor por defecto del campo del AddItem o formulario.
              task={task}
          />
          <TaskList
