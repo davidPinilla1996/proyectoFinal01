@@ -1,4 +1,6 @@
+//importamos el useState 
 import React, { useState } from 'react';
+//importamos los comoponentes
 import { View, ImageBackground, Text } from 'react-native';
 import { styles } from './styles';
 import { AddItem, CustomModal, TaskList} from './components';
@@ -27,18 +29,18 @@ const App = () => {
   }
 
   const onHandlerModal = (item) => {
-    setIsModalVisible(!isModalVisible)
-    setSelectedTask(item);
+      setIsModalVisible(!isModalVisible)
+      setSelectedTask(item);
   }
   
   const onHandleCancel = () => {
-    setIsModalVisible(!isModalVisible);
-    setSelectedTask(null);
+      setIsModalVisible(!isModalVisible);
+      setSelectedTask(null);
   }
 
   const onHandleDelete = () => {
-    setTasks((prevTaskList) => prevTaskList.filter((task) => task.id !== selectedTask.id));
-    setIsModalVisible(!isModalVisible);
+      setTasks((prevTaskList) => prevTaskList.filter((task) => task.id !== selectedTask.id));
+      setIsModalVisible(!isModalVisible);
   }
 
   return (
@@ -51,23 +53,25 @@ const App = () => {
               </Text>
           </View>
          <AddItem
-           buttonColor={colors.primary}
-           buttonText='Agregar tarea'
-           onHandlerChange={onHandlerChange}
-           onHandlerSubmit={onHandlerSubmit}
-           placeholder='Escribe tu tarea'
-           task={task}
-           />
+             buttonColor={colors.primary}
+             //Texto que se mostrará en los botones
+             buttonText='Agregar tarea'
+             onHandlerChange={onHandlerChange}
+             onHandlerSubmit={onHandlerSubmit}
+             //para que se vea lo que vamos a tener que llenar dentro del campo.
+             placeholder='Escribe tu tarea'
+             task={task}
+         />
          <TaskList
-           tasks={tasks}
-           onHandlerModal={onHandlerModal}
-           />
+             tasks={tasks}
+             onHandlerModal={onHandlerModal}
+         />
          <CustomModal 
-            isModalVisible={isModalVisible}
-            onHandleCancel={onHandleCancel}
-            onHandleDelete={onHandleDelete}
-            selectedTask={selectedTask}
-        />
+              isModalVisible={isModalVisible}
+              onHandleCancel={onHandleCancel}
+              onHandleDelete={onHandleDelete}
+              selectedTask={selectedTask}
+         />
      </ImageBackground>
   </View>
   );

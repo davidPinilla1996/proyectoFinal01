@@ -1,3 +1,4 @@
+//importamos el modulo de StyleSheet para estilizar los componentes.
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
