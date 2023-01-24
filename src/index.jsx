@@ -13,7 +13,10 @@ const App = () => {
                         //por que inicalmente el campo del AddItem o del formulario va a estar vacio.
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
+  //creamos un estado donde me permita hacer visible o no el modal
+                                              //inicializamos el useste el falso por que el modal inicialmente no se va a ver.
   const [isModalVisible, setIsModalVisible] = useState(false);
+  //creamos un estado de seleccion de datos y inicializamos el useState como null por que por default la tarea no va a estar seleccionada
   const [selectedTask, setSelectedTask] = useState(null);
    //creo una funcion que recibe el texto que contiene el campo del AddItem 
   const onHandlerChange = (text) => {
