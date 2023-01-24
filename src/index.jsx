@@ -17,18 +17,25 @@ const App = () => {
   const [selectedTask, setSelectedTask] = useState(null);
    //creo una funcion que recibe el texto que contiene el campo del AddItem 
   const onHandlerChange = (text) => {
-    //Le asigno ese valor de text a la funcion de setTask del useState.
+    //Le asigno ese valor de text a la funcion de setTask del useState.(setiamos el texto)
     setTask(text)
   }
-
+// me permite guardar la tarea
   const onHandlerSubmit = (opcion) => {
+    //setiamos la lista de tareas
     setTasks([
+      //hacemos una copia de la lista de tareas anteriores por que podria estar llena la lista
       ...tasks,
+      //añadimos un objeto para que las tareas que vamos a agregar sean un objeto
       {
+        //las tareas van a tener un id con un numero aleatorio con Math.random().toString(),
+        // utilizamos un id con un numero aleatorio para poder guardar esa tarea y asigarle un id
         id: Math.random().toString(),
+        //Este es el valor de la tarea que va a ser la tarea que yo escriba o cree dentro del campo del AddItem
         value: task
       }
     ]);
+    //vaciamos la tarea luego de darle click al boton de agregar tarea para poder crear una nueva.
     setTask('');
   }
 
@@ -60,8 +67,9 @@ const App = () => {
              buttonColor={colors.primary}
              //Texto que se mostrará en los botones.
              buttonText='Agregar tarea'
-             //Llamamos a la funcion onHandlerChange
+                              //Llamamos a la funcion onHandlerChange
              onHandlerChange={onHandlerChange}
+                              //llamamos a la funcion onHandlerSubmit
              onHandlerSubmit={onHandlerSubmit}
              //para que se vea lo que vamos a tener que llenar dentro del campo.
              placeholder='Escribe tu tarea'
