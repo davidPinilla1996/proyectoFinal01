@@ -23,6 +23,7 @@ const TaskList = ({ tasks, onHandlerModal}) => {
         renderItem={renderItem}
         //colocamos la funcion del keyExtractor dentro del FlatList y en el keyExtractor
         keyExtractor={keyExtractor}
+        //estilizamos en FlatList
         style={styles.listContainer}
       />
     )
